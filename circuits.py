@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 from dataclasses import dataclass
 from enum import Enum
+from rich.console import Console
+
+console = Console()
 
 
 class Side(Enum):
@@ -40,9 +43,12 @@ class Wire:
     def evaluate_power(self):
         ...
 
+    def print(self):
+        console.print(self.repr, style=self.color, end="")
+
 
 def main():
-    pass
+    ...
 
 
 if __name__ == "__main__":
