@@ -74,7 +74,8 @@ class Wire:
         self.powered = any(neighbor.powered for neighbor in self.neighbors)
 
     def print(self):
-        console.print(self.repr, style=self.color, end="")
+        background = " on white" if self.powered else ""
+        console.print(self.repr, style=self.color + background, end="")
 
 
 def main():
