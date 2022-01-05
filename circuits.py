@@ -20,6 +20,13 @@ sides = {
     "┴": (Side.TOP, Side.LEFT, Side.RIGHT),
 }
 
+inverse = {
+    Side.TOP: Side.BOTTOM,
+    Side.BOTTOM: Side.TOP,
+    Side.LEFT: Side.RIGHT,
+    Side.RIGHT: Side.LEFT,
+}
+
 
 @dataclass
 class Wire:
@@ -34,7 +41,7 @@ class Wire:
         return sides[self.repr]
 
     def is_connected(self, neighbor: "Wire", side: Side):
-        ...
+        return side in self.sides and inverse[side] in neighbor.sides
 
     @property
     def neighbors(self) -> list["Wire"]:
