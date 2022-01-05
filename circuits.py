@@ -7,7 +7,10 @@ console = Console()
 
 
 class Side(Enum):
-    LEFT, RIGHT, TOP, BOTTOM = range(4)
+    TOP = (0, -1)
+    BOTTOM = (0, 1)
+    RIGHT = (1, 0)
+    LEFT = (-1, 0)
 
 
 sides = {
