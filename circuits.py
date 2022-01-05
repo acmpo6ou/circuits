@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 from dataclasses import dataclass
+from enum import Enum
+
+
+class Side(Enum):
+    LEFT, RIGHT, TOP, BOTTOM = range(4)
 
 
 @dataclass
@@ -10,7 +15,7 @@ class Wire:
     grid: list = None
     powered = False
 
-    def is_connected(self, neighbor: "Wire", side):
+    def is_connected(self, neighbor: "Wire", side: Side):
         ...
 
     @property
