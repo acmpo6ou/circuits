@@ -33,8 +33,16 @@ class Wire:
     repr: str
     color: str
 
-    grid: list = None
+    grid: list[list["Wire"]] = None
     powered = False
+
+    def position(self):
+        for x, row in enumerate(self.grid):
+            try:
+                y = row.index(self)
+            except ValueError:
+                continue
+            return x, y
 
     @property
     def sides(self) -> tuple[Side]:
