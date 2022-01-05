@@ -39,7 +39,7 @@ class Wire:
     grid: list[list["Wire"]] = None
     powered = False
 
-    def position(self):
+    def position(self) -> tuple[int, int]:
         for x, row in enumerate(self.grid):
             try:
                 y = row.index(self)
@@ -56,7 +56,19 @@ class Wire:
 
     @property
     def neighbors(self) -> list["Wire"]:
-        ...
+        x, y = self.position()
+        neighbors = []
+
+        for side in Side:
+            dx, dy = side.value
+            try:
+                neighbor = self.grid[y + dy][x + dx]
+                if neighbor.color != self.color or not self.is_connected(neighbor, side):
+                    continue
+            except IndexError:
+                continue
+            neighbors.append(neighbor)
+        return neighbors
 
     def evaluate_power(self):
         ...
