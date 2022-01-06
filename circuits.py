@@ -30,7 +30,7 @@ def main():
         old_state = deepcopy(grid)
         for row in grid:
             for wire in row:
-                if wire.position() in ((0, 0), (0, 1)):
+                if wire.position() in ((0, 0), (1, 0)):
                     continue
                 wire.evaluate_power()
 

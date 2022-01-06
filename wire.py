@@ -39,12 +39,10 @@ class Wire:
     powered = False
 
     def position(self) -> tuple[int, int]:
-        for x, row in enumerate(self.grid):
-            try:
-                y = row.index(self)
-            except ValueError:
-                continue
-            return x, y
+        for y, row in enumerate(self.grid):
+            for x, wire in enumerate(row):
+                if id(self) == id(wire):
+                    return x, y
 
     @property
     def sides(self) -> tuple[Side]:
