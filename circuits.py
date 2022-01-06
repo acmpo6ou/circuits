@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 from copy import deepcopy
 
-from lamp import Lamp
-from wire import Wire
+from core.lamp import Lamp
+from core.wire import Wire
 
 # fmt: off
 grid = [

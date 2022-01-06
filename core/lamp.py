@@ -1,4 +1,4 @@
-from wire import Wire, Side, sides
+from core.wire import Wire, Side, sides
 
 
 class Lamp(Wire):
