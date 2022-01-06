@@ -2,11 +2,12 @@
 from copy import deepcopy
 
 from core.lamp import Lamp
+from core.plus_minus import PlusMinus
 from core.wire import Wire
 
 # fmt: off
 grid = [
-    [Wire("┼", "red"), Wire("┼", "blue"), Wire("─", "blue"), Wire("─", "blue"), Wire("┤", "blue")],
+    [PlusMinus("+"), PlusMinus("-"), Wire("─", "blue"), Wire("─", "blue"), Wire("┤", "blue")],
     [Wire("├", "red"), Wire("┼", "red"), Wire("┼", "blue"), Wire("┼", "blue"), Wire("┤", "blue")],
     [Wire("├", "red"), Wire("┼", "red"), Wire("┼", "blue"), Wire("┼", "blue"), Wire("┤", "blue")],
     [Wire("├", "red"), Wire("┼", "red"), Wire("┼", "red"), Wire("┼", "blue"), Wire("┤", "blue")],
@@ -18,9 +19,6 @@ for row in grid:
     for wire in row:
         wire.grid = grid
 
-grid[0][0].powered = True
-grid[0][1].powered = True
-
 old_state = None
 
 
@@ -31,8 +29,6 @@ def main():
         old_state = deepcopy(grid)
         for row in grid:
             for wire in row:
-                if wire.position() in ((0, 0), (1, 0)):
-                    continue
                 wire.evaluate_power()
 
         if old_state == grid:
