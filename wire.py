@@ -75,3 +75,6 @@ class Wire:
     def print(self):
         background = " on white" if self.powered else ""
         console.print(self.repr, style=self.color + background, end="")
+
+    def __eq__(self, other):
+        return self.powered == other.powered
