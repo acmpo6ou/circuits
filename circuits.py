@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from copy import deepcopy
 
+from lamp import Lamp
 from wire import Wire
 
 # fmt: off
@@ -9,7 +10,7 @@ grid = [
     [Wire("├", "red"), Wire("┼", "red"), Wire("┼", "blue"), Wire("┼", "blue"), Wire("┤", "blue")],
     [Wire("├", "red"), Wire("┼", "red"), Wire("┼", "blue"), Wire("┼", "blue"), Wire("┤", "blue")],
     [Wire("├", "red"), Wire("┼", "red"), Wire("┼", "red"), Wire("┼", "blue"), Wire("┤", "blue")],
-    [Wire("├", "red"), Wire("─", "red"), Wire("─", "red"), Wire("─", "red"), Wire("┤", "blue")],
+    [Wire("├", "red"), Wire("─", "red"), Wire("─", "red"), Wire("─", "red"), Lamp()],
 ]
 # fmt: on
 
